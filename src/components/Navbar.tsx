@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <header className="navbar">
-      <div className="navbar-logo">DataQuest_Garry</div>
+      <div className="navbar-logo">WFM Clubs</div>
 
       <nav className="navbar-menu">
         {/* HOME */}
