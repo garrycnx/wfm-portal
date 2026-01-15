@@ -63,6 +63,22 @@ export default function Navbar() {
           </DropdownItem>
         </Dropdown>
 
+        {/* Templates | Terminology */}
+        <Dropdown
+          label="Templates | Terminology"
+          isOpen={openMenu === "terminology"}
+          onToggle={() => toggleMenu("terminology")}
+          onClose={closeMenu}
+        >
+          <DropdownItem
+            href="/terminology/wfm-metrics"
+            onClick={closeMenu}
+          >
+            WFM Metrics
+          </DropdownItem>
+        </Dropdown>     
+
+
         {/* ABOUT */}
         <Dropdown
           label="About Us"
