@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <div style={{ padding: "60px" }}>
-      <h1 style={{ marginBottom: "40px" }}>About the Founder</h1>
+      <h1 style={{ marginBottom: "10px", textAlign: "left", marginTop: "60px" , width: "100%", marginInline: "auto",marginLeft: "500px"}}>About the Founder</h1>
 
       <div
         style={{
