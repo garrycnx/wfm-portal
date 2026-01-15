@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const runtime = "nodejs"; // IMPORTANT for Resend
 
 export async function POST(req: Request) {
   try {
@@ -13,11 +13,14 @@ export async function POST(req: Request) {
       );
     }
 
+    // ✅ Initialize Resend INSIDE the handler
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     await resend.emails.send({
       from: "WFMClubs <onboarding@resend.dev>",
       to: [process.env.CONTACT_EMAIL!],
       subject: "New Contact Query – WFMClubs",
-      replyTo: email, // ✅ correct
+      replyTo: email,
       html: `
         <h2>New Contact Query</h2>
         <p><strong>Name:</strong> ${name}</p>
@@ -32,7 +35,7 @@ export async function POST(req: Request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error(error);
+    console.error("Contact API error:", error);
     return new Response(
       JSON.stringify({ error: "Failed to send email" }),
       { status: 500 }
