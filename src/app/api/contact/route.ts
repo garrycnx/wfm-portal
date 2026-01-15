@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
@@ -8,14 +9,14 @@ export async function POST(req: Request) {
     const contactEmail = process.env.CONTACT_EMAIL;
 
     if (!apiKey || !contactEmail) {
-      console.error("Missing environment variables");
       return new Response(
-        JSON.stringify({ error: "Server configuration error" }),
+        JSON.stringify({ error: "Server misconfiguration" }),
         { status: 500 }
       );
     }
 
-    const { name, email, message } = await req.json();
+    const body = await req.json();
+    const { name, email, message } = body;
 
     if (!name || !email || !message) {
       return new Response(
@@ -24,6 +25,7 @@ export async function POST(req: Request) {
       );
     }
 
+    // Initialize Resend ONLY at runtime
     const resend = new Resend(apiKey);
 
     await resend.emails.send({
