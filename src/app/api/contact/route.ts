@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       from: "WFMClubs <onboarding@resend.dev>",
       to: [process.env.CONTACT_EMAIL!],
       subject: "New Contact Query – WFMClubs",
-      reply_to: email,
+      replyTo: email, // ✅ correct
       html: `
         <h2>New Contact Query</h2>
         <p><strong>Name:</strong> ${name}</p>
