@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -15,8 +13,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const body = await req.json();
-    const { name, email, message } = body;
+    const { name, email, message } = await req.json();
 
     if (!name || !email || !message) {
       return new Response(
@@ -25,7 +22,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // Initialize Resend ONLY at runtime
+    // ✅ IMPORTANT: dynamic import (prevents build-time execution)
+    const { Resend } = await import("resend");
     const resend = new Resend(apiKey);
 
     await resend.emails.send({
@@ -42,9 +40,10 @@ export async function POST(req: Request) {
       `,
     });
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-    });
+    return new Response(
+      JSON.stringify({ success: true }),
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Contact API error:", error);
     return new Response(
