@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 
-type MenuName = "home" | "tools" | "about" | "contact" | null;
+type MenuName =
+  | "home"
+  | "tools"
+  | "terminology"
+  | "about"
+  | "contact"
+  | null;
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<MenuName>(null);
