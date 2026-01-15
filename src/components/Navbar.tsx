@@ -58,7 +58,7 @@ export default function Navbar() {
             What-if Simulator
           </DropdownItem>
 
-           <DropdownItem href="/demo-videos" >
+          <DropdownItem href="/demo-videos" onClick={closeMenu}>
             Demo Videos
           </DropdownItem>
         </Dropdown>
