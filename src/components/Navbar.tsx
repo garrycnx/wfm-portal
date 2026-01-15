@@ -46,7 +46,7 @@ export default function Navbar() {
             href="https://wfm-schedule1-2.streamlit.app/"
             onClick={closeMenu}
           >
-            AI Schedule Generator
+            AI Schedule Generator V 1.3
           </ExternalDropdownItem>
           <ExternalDropdownItem
             href="https://forecastingtool1-2.streamlit.app/"
