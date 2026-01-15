@@ -12,14 +12,6 @@ export default function Footer() {
         rel="noopener noreferrer"
       >
         LinkedIn
-      </a>{" "}
-      ·{" "}
-      <a
-        href="https://github.com/garrycnx"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
       </a>
     </div>
   );
