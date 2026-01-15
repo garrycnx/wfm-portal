@@ -1,9 +1,8 @@
 /* ---------- NAVBAR ---------- */
-
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 9999;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -19,11 +18,11 @@
 
 .navbar-menu {
   display: flex;
-  justify-content: center; /* 👈 CENTER MENU */
+  justify-content: center;
   gap: 30px;
 }
-/* ---------- DROPDOWN ---------- */
 
+/* ---------- DROPDOWN ---------- */
 .dropdown {
   position: relative;
 }
@@ -48,6 +47,7 @@
 
 .dropdown-menu {
   position: absolute;
+  z-index:10000;
   top: 32px;
   left: 0;
   background: white;
@@ -56,6 +56,7 @@
   border-radius: 6px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   padding: 8px 0;
+  pointer-events:auto;
 }
 
 .dropdown-item {
@@ -70,23 +71,24 @@
   background: #f4f6f8;
 }
 
-/* Fotter code  */
-
+/* ---------- FOOTER ---------- */
 .footer-credit {
   position: fixed;
-  right: 20px;
+  left: 50%;
   bottom: 15px;
-  font-size: 12px;
-  color: #cbd5e1;
-  opacity: 0.85;
-  z-index: 1000;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #032f42;
+  opacity: 0.9;
+  z-index: 2000;
   display: flex;
   gap: 6px;
   align-items: center;
+  letter-spacing: 0.3px;
 }
 
 .footer-credit a {
-  color: #38bdf8; /* light blue */
+  color: #032f42;
   text-decoration: none;
   font-weight: 500;
 }
@@ -96,6 +98,110 @@
 }
 
 .footer-name {
+  color: #032f42;
+  font-weight: 600;
+}
+
+main {
+  position: relative;
+  z-index: 1;   /* 👈 keeps content below navbar dropdown */
+  padding-top:70px;
+}
+
+main * {
+  pointer-events: auto;
+}
+
+/* ---------- ABOUT PAGE ---------- */
+
+.about-page {
+  display: flex;
+  justify-content: flex-start; /* left aligned */
+  padding: 60px 40px;
+}
+
+.about-card {
+  max-width: 700px;
+  background: #0b1c2d; /* dark professional */
+  padding: 40px;
+  border-radius: 12px;
+
+  /* Shadow + etched effect */
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.08),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.6),
+    0 20px 40px rgba(0, 0, 0, 0.35);
+
+  color: #e5e7eb;
+}
+
+.about-title {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
   color: #ffffff;
+}
+
+.about-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+/* ---------- CONTACT PAGE ---------- */
+
+.contact-page {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #00b4ff;
+}
+
+.contact-form button {
+  padding: 12px;
+  background: #00b4ff;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #0095d8;
+}
+
+.success-msg {
+  color: #16a34a;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.error-msg {
+  color: #dc2626;
+  margin-bottom: 16px;
   font-weight: 600;
 }

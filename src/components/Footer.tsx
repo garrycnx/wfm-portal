@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <div className="footer-credit">
       © {year}{" "}
-      <span className="footer-name">Gurpreet Singh</span>{" "}
-      | Developed by{" "}
+      <span className="footer-name">Developed by {" "} Gurpreet Singh</span>{" "}
+      | 
       <a
         href="https://www.linkedin.com/in/gurpreetgarry/"
         target="_blank"
