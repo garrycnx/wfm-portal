@@ -6,10 +6,10 @@ import { useState } from "react";
 export default function Navbar() {
   return (
     <header className="navbar">
-      <div className="navbar-logo">Data Quest</div>
+      <div className="navbar-logo">DataQuest_Garry</div>
 
       <nav className="navbar-menu">
-        <Dropdown label="Home">
+        <Dropdown label="Home" href="/">
           <DropdownItem href="/">Overview</DropdownItem>
           <DropdownItem href="/">Why Data Quest</DropdownItem>
         </Dropdown>
@@ -39,9 +39,11 @@ export default function Navbar() {
 
 function Dropdown({
   label,
+  href,
   children,
 }: {
   label: string;
+  href?: string;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -52,9 +54,19 @@ function Dropdown({
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
+    {href ? (
+      <Link href={href} className="dropdown-btn">
+        {label} <span className="arrow">▼</span>
+
+      </Link>
+    ) : (
       <button className="dropdown-btn">
         {label} <span className="arrow">▼</span>
+
       </button>
+    )}  
+      
+      
 
       {open && <div className="dropdown-menu">{children}</div>}
     </div>
