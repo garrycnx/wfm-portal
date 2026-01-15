@@ -57,6 +57,10 @@ export default function Navbar() {
           <DropdownItem href="/tools" onClick={closeMenu}>
             What-if Simulator
           </DropdownItem>
+
+           <DropdownItem href="/demo-videos" >
+            Demo Videos
+          </DropdownItem>
         </Dropdown>
 
         {/* ABOUT */}
