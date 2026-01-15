@@ -1,9 +1,20 @@
 import { Resend } from "resend";
 
-export const runtime = "nodejs"; // IMPORTANT for Resend
+export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    const contactEmail = process.env.CONTACT_EMAIL;
+
+    if (!apiKey || !contactEmail) {
+      console.error("Missing environment variables");
+      return new Response(
+        JSON.stringify({ error: "Server configuration error" }),
+        { status: 500 }
+      );
+    }
+
     const { name, email, message } = await req.json();
 
     if (!name || !email || !message) {
@@ -13,12 +24,11 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ Initialize Resend INSIDE the handler
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(apiKey);
 
     await resend.emails.send({
       from: "WFMClubs <onboarding@resend.dev>",
-      to: [process.env.CONTACT_EMAIL!],
+      to: [contactEmail],
       subject: "New Contact Query – WFMClubs",
       replyTo: email,
       html: `
@@ -30,10 +40,9 @@ export async function POST(req: Request) {
       `,
     });
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200 }
-    );
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+    });
   } catch (error) {
     console.error("Contact API error:", error);
     return new Response(
