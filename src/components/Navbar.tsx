@@ -55,6 +55,14 @@ export default function Navbar() {
             AI Schedule Generator V 1.3
           </ExternalDropdownItem>
           <ExternalDropdownItem
+            href="https://schedule1-4.streamlit.app/"
+            onClick={closeMenu}
+          >
+            AI Schedule Generator V 1.4
+          </ExternalDropdownItem>
+
+
+          <ExternalDropdownItem
             href="https://forecastingtool1-2.streamlit.app/"
             onClick={closeMenu}
           >
