@@ -7,6 +7,11 @@ type Video = {
 
 const videos: Video[] = [
   {
+    title: "AI Scheduling tool walkthrough V 1.4",
+    youtubeId: "PhBA-qaGos0",
+  },
+
+  {
     title: "AI Scheduling tool walkthrough",
     youtubeId: "LVza9tBL4iA",
   },
