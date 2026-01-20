@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 type MenuName =
   | "home"
@@ -13,6 +14,7 @@ type MenuName =
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<MenuName>(null);
+  const { data: session } = useSession();
 
   const toggleMenu = (menu: MenuName) => {
     setOpenMenu((prev) => (prev === menu ? null : menu));
@@ -28,7 +30,6 @@ export default function Navbar() {
         {/* HOME */}
         <Dropdown
           label="Home"
-          href="/"
           isOpen={openMenu === "home"}
           onToggle={() => toggleMenu("home")}
           onClose={closeMenu}
@@ -52,22 +53,23 @@ export default function Navbar() {
             href="https://wfm-schedule1-2.streamlit.app/"
             onClick={closeMenu}
           >
-            AI Schedule Generator V 1.3
+            AI Schedule Generator V1.3
           </ExternalDropdownItem>
+
           <ExternalDropdownItem
             href="https://schedule1-4.streamlit.app/"
             onClick={closeMenu}
           >
-            AI Schedule Generator V 1.4
+            AI Schedule Generator V1.4
           </ExternalDropdownItem>
-
 
           <ExternalDropdownItem
             href="https://forecastingtool1-2.streamlit.app/"
             onClick={closeMenu}
           >
-             Forecasting Engine
+            Forecasting Engine
           </ExternalDropdownItem>
+
           <DropdownItem href="/tools" onClick={closeMenu}>
             What-if Simulator
           </DropdownItem>
@@ -77,7 +79,7 @@ export default function Navbar() {
           </DropdownItem>
         </Dropdown>
 
-        {/* Templates | Terminology */}
+        {/* TERMINOLOGY */}
         <Dropdown
           label="Templates | Terminology"
           isOpen={openMenu === "terminology"}
@@ -90,8 +92,7 @@ export default function Navbar() {
           >
             WFM Metrics
           </DropdownItem>
-        </Dropdown>     
-
+        </Dropdown>
 
         {/* ABOUT */}
         <Dropdown
@@ -122,27 +123,58 @@ export default function Navbar() {
             Contact Us
           </DropdownItem>
 
-            {/* ✅ WhatsApp Group */}
           <ExternalDropdownItem
             href="https://chat.whatsapp.com/Jwc6CHZsRyR2l7uP6x1N6n"
             onClick={closeMenu}
           >
-           📱 Whatsapp Group
+            📱 Whatsapp Group
           </ExternalDropdownItem>
 
-          <ExternalDropdownItem 
-           href="https://www.linkedin.com/in/gurpreetgarry/"
-          onClick={closeMenu}>
-           💼 Linkedin
+          <ExternalDropdownItem
+            href="https://www.linkedin.com/in/gurpreetgarry/"
+            onClick={closeMenu}
+          >
+            💼 Linkedin
           </ExternalDropdownItem>
 
           <ExternalDropdownItem
             href="https://www.youtube.com/@DataQuest_garry"
             onClick={closeMenu}
-           >
-           ▶️ YouTube Channel
+          >
+            ▶️ YouTube Channel
           </ExternalDropdownItem>
         </Dropdown>
+
+        {/* 🔐 AUTH SECTION */}
+        <div className="auth-section">
+          {!session ? (
+            <button className="login-btn" onClick={() => signIn("google")}>
+              Login
+            </button>
+          ) : (
+            <div className="profile-menu">
+              <img
+                src={session.user?.image || "/user.png"}
+                alt="User"
+                className="profile-pic"
+              />
+
+              <div className="profile-dropdown">
+                <p className="user-name">{session.user?.name}</p>
+                <p className="user-email">{session.user?.email}</p>
+
+                <hr />
+
+                <button
+                  className="logout-btn"
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   );
@@ -152,14 +184,12 @@ export default function Navbar() {
 
 function Dropdown({
   label,
-  href,
   isOpen,
   onToggle,
   onClose,
   children,
 }: {
   label: string;
-  href?: string;
   isOpen: boolean;
   onToggle: () => void;
   onClose: () => void;
@@ -167,19 +197,9 @@ function Dropdown({
 }) {
   return (
     <div className="dropdown">
-      {href ? (
-        <Link
-          href={href}
-          className="dropdown-btn"
-          onClick={onClose}
-        >
-          {label} <span className="arrow">▼</span>
-        </Link>
-      ) : (
-        <div className="dropdown-btn" onClick={onToggle}>
-          {label} <span className="arrow">▼</span>
-        </div>
-      )}
+      <div className="dropdown-btn" onClick={onToggle}>
+        {label} <span className="arrow">▼</span>
+      </div>
 
       {isOpen && <div className="dropdown-menu">{children}</div>}
     </div>
