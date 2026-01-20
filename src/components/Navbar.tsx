@@ -122,6 +122,13 @@ export default function Navbar() {
             Contact Us
           </DropdownItem>
 
+            {/* ✅ WhatsApp Group */}
+          <ExternalDropdownItem
+            href="https://chat.whatsapp.com/Jwc6CHZsRyR2l7uP6x1N6n"
+            onClick={closeMenu}
+          >
+           📱 Whatsapp Group
+          </ExternalDropdownItem>
 
           <ExternalDropdownItem 
            href="https://www.linkedin.com/in/gurpreetgarry/"
