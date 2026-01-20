@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -8,9 +8,9 @@ export default async function Dashboard() {
   if (!session) redirect("/login");
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Welcome, {session.user.name} 👋</h1>
-      <p>You are logged in successfully.</p>
+    <div>
+      <h1>Welcome {session.user?.name}</h1>
+      <p>{session.user?.email}</p>
     </div>
   );
 }

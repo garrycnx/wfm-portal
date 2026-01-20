@@ -1,8 +1,22 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // ✅ Redirect logged-in users
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  if (status === "loading") return null;
+
   return (
     <div style={styles.container}>
       <div style={styles.card}>
@@ -13,9 +27,7 @@ export default function LoginPage() {
 
         <button
           style={styles.googleBtn}
-          onClick={() =>
-            signIn("google", { callbackUrl: "/dashboard" })
-          }
+          onClick={() => signIn("google")}
         >
           <img
             src="https://developers.google.com/identity/images/g-logo.png"
@@ -33,7 +45,7 @@ export default function LoginPage() {
   );
 }
 
-/* ------------------ STYLES ------------------ */
+/* ---------- STYLES (UNCHANGED) ---------- */
 
 const styles = {
   container: {
