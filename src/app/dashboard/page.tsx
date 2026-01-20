@@ -40,7 +40,7 @@ export default async function Dashboard() {
 
             <div style={styles.statBox}>
               <h4>Templates</h4>
-              <p>10+ Ready</p>
+              <p>1 Ready</p>
             </div>
 
             <div style={styles.statBox}>
