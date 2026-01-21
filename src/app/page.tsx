@@ -20,14 +20,15 @@ export default function Home() {
           </a>
         </div>
         <div className="live-session-wrapper">
-        <a
-          href="https://calendar.app.google/asQfmbYrmg2oqUxb8"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="live-session-btn"
-        >
-          📅 Live Session – 24th Jan ’26
-        </a>
+          <a
+            href="https://calendar.app.google/asQfmbYrmg2oqUxb8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="live-session-btn"
+          >
+            <div className="live-title">📅 Live Session – 24th Jan ’26</div>
+            <div className="live-time">⏰ 1:00 PM – 1:40 PM IST</div>
+          </a>
         </div>
       </section>
 

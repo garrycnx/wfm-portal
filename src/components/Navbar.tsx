@@ -143,6 +143,14 @@ export default function Navbar() {
           >
             ▶️ YouTube Channel
           </ExternalDropdownItem>
+          <ExternalDropdownItem
+            href="https://www.instagram.com/wfmclub?igsh=MTE5Z2ZzYXpra3lnag==&utm_source=ig_contact_invite"
+            onClick={closeMenu}
+          >
+            📸 Instagram
+          </ExternalDropdownItem>
+
+
         </Dropdown>
 
         {/* 🔐 AUTH SECTION */}
@@ -154,14 +162,25 @@ export default function Navbar() {
           ) : (
             <div className="profile-menu">
               <img
-                src={session.user?.image || "/user.png"}
+                src={session.user?.image || "/user-avatar.png"}
                 alt="User"
                 className="profile-pic"
+                referrerPolicy="no-referrer"
               />
 
               <div className="profile-dropdown">
-                <p className="user-name">{session.user?.name}</p>
-                <p className="user-email">{session.user?.email}</p>
+                <div className="profile-info">
+                  <img
+                    src={session.user?.image || "/user-avatar.png"}
+                    className="profile-pic-large"
+                    alt="user"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <p className="user-name">{session.user?.name}</p>
+                    <p className="user-email">{session.user?.email}</p>
+                  </div>
+                </div>
 
                 <hr />
 

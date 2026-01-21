@@ -356,21 +356,28 @@ main * {
 }
 
 .live-session-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background-color: #0f172a;
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: #0f172a;
   color: #ffffff;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 6px;
   text-decoration: none;
-  border: 1px solid #1e293b;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .live-session-btn:hover {
-  background-color: #1e293b;
+  background: #111827;
   transform: translateY(-1px);
+}
+
+.live-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.live-time {
+  font-size: 12.5px;
+  margin-top: 4px;
+  color: #9ca3af;
 }
