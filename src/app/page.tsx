@@ -19,6 +19,16 @@ export default function Home() {
             Learn More
           </a>
         </div>
+        <div className="live-session-wrapper">
+        <a
+          href="https://calendar.app.google/asQfmbYrmg2oqUxb8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="live-session-btn"
+        >
+          📅 Live Session – 24th Jan ’26
+        </a>
+        </div>
       </section>
 
       {/* FEATURES */}
