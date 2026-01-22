@@ -28,6 +28,7 @@ export default function Home() {
           >
             <div className="live-title">📅 Live Session – 24th Jan ’26</div>
             <div className="live-time">⏰ 1:00 PM – 1:40 PM IST</div>
+            <div className="live-join">👉 Click to join</div>
           </a>
         </div>
       </section>
