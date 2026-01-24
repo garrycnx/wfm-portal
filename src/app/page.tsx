@@ -19,7 +19,7 @@ export default function Home() {
             Learn More
           </a>
         </div>
-        <div className="live-session-wrapper">
+        {/* <div className="live-session-wrapper">
           <a
             href="https://calendar.app.google/asQfmbYrmg2oqUxb8"
             target="_blank"
@@ -30,7 +30,7 @@ export default function Home() {
             <div className="live-time">⏰ 1:00 PM – 1:40 PM IST</div>
             <div className="live-join">👉 Click to join</div>
           </a>
-        </div>
+        </div> */}
       </section>
 
       {/* FEATURES */}
