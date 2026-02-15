@@ -8,6 +8,7 @@ type MenuName =
   | "home"
   | "tools"
   | "terminology"
+  | "interview"
   | "about"
   | "contact"
   | null;
@@ -64,6 +65,14 @@ export default function Navbar() {
           </ExternalDropdownItem>
 
           <ExternalDropdownItem
+            href="/downloads/AI_Schedule_Generator.exe"
+            download
+            onClick={closeMenu}
+          >
+            AI Scheduling Desktop App V2.1
+          </ExternalDropdownItem>
+
+          <ExternalDropdownItem
             href="https://forecastingtool1-2.streamlit.app/"
             onClick={closeMenu}
           >
@@ -93,7 +102,31 @@ export default function Navbar() {
             WFM Metrics
           </DropdownItem>
         </Dropdown>
+        {/* Interview */}
+        <Dropdown
+          label="Interview Prepration"
+          isOpen={openMenu === "interview"}
+          onToggle={() => toggleMenu("interview")}
+          onClose={closeMenu}
+        >
+        <DropdownItem href="/interview/rta" onClick={closeMenu}>
+          RTA Interview Preparation
+        </DropdownItem>
 
+        <DropdownItem href="/interview/scheduling" onClick={closeMenu}>
+          Scheduler Interview Preparation
+        </DropdownItem>
+
+        <DropdownItem href="/interview/capacity" onClick={closeMenu}>
+          Capacity Planning Interview Preparation
+        </DropdownItem>
+
+        <DropdownItem href="/interview/forecasting" onClick={closeMenu}>
+          Forecasting Interview Preparation
+        </DropdownItem>
+
+        </Dropdown>
+        
         {/* ABOUT */}
         <Dropdown
           label="About Us"
