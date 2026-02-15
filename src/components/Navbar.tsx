@@ -66,7 +66,6 @@ export default function Navbar() {
 
           <ExternalDropdownItem
             href="https://github.com/garrycnx/wfm-portal/releases/download/v2.1/AI_Schedule_Generator.exe"
-            download
             onClick={closeMenu}
           >
             AI Scheduling Desktop App V2.1
