@@ -65,7 +65,7 @@ export default function Navbar() {
           </ExternalDropdownItem>
 
           <ExternalDropdownItem
-            href="/downloads/AI_Schedule_Generator.exe"
+            href="https://github.com/garrycnx/wfm-portal/releases/download/v2.1/AI_Schedule_Generator.exe"
             download
             onClick={closeMenu}
           >
