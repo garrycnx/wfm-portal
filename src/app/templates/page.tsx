@@ -14,7 +14,7 @@ const templates = [
     color: "from-blue-500 to-cyan-500",
     icon: "📊",
     complexity: "Intermediate",
-    href: "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms/template/preview",
+    href: "https://docs.google.com/spreadsheets/d/13VDMIG4T0rtALSGofn3836bmltGOKaL-/edit?usp=drive_link&ouid=107182458534546555778&rtpof=true&sd=true",
   },
   {
     title: "Capacity Planning Model",
@@ -23,7 +23,7 @@ const templates = [
     color: "from-purple-500 to-pink-500",
     icon: "🗓",
     complexity: "Advanced",
-    href: "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms/template/preview",
+    href: "https://docs.google.com/spreadsheets/d/1sI9xoNXrLYPUOFOa5j8O6bUJUCn2RdHw/edit?usp=drive_link&ouid=107182458534546555778&rtpof=true&sd=true",
   },
   {
     title: "Shrinkage Tracker",
@@ -32,7 +32,7 @@ const templates = [
     color: "from-green-500 to-teal-500",
     icon: "📉",
     complexity: "Beginner",
-    href: "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms/template/preview",
+    href: "https://docs.google.com/spreadsheets/d/1-fMhtjtqf7bgJ3I00tINYlaYMRrJ7zBM/edit?usp=drive_link&ouid=107182458534546555778&rtpof=true&sd=true",
   },
   {
     title: "Schedule Efficiency Analyser",
@@ -41,7 +41,7 @@ const templates = [
     color: "from-orange-500 to-red-500",
     icon: "⚡",
     complexity: "Intermediate",
-    href: "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms/template/preview",
+    href: "https://docs.google.com/spreadsheets/d/1OKcedmHmToucP-AR4C2LnyNCrHONBsvI/edit?usp=drive_link&ouid=107182458534546555778&rtpof=true&sd=true",
   },
   {
     title: "WFM Forecast Model (WMA + Seasonal Index)",
@@ -50,7 +50,7 @@ const templates = [
     color: "from-indigo-500 to-blue-500",
     icon: "📈",
     complexity: "Advanced",
-    href: "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms/template/preview",
+    href: "https://docs.google.com/spreadsheets/d/1myltzRra5HFn9a8pcKYCrN68Kfa90CqH/edit?usp=drive_link&ouid=107182458534546555778&rtpof=true&sd=true",
   },
   {
     title: "RTA Intraday Management Dashboard",
@@ -59,7 +59,7 @@ const templates = [
     color: "from-pink-500 to-rose-500",
     icon: "🎯",
     complexity: "Intermediate",
-    href: "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms/template/preview",
+    href: "https://docs.google.com/spreadsheets/d/1U4uWT1hprylihLCdO4Ud7wtprPEPBG2d/edit?usp=drive_link&ouid=107182458534546555778&rtpof=true&sd=true",
   },
 ];
 
