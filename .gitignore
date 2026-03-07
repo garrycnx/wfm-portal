@@ -47,3 +47,12 @@ wfm-portal/
 next-env.d.ts
 
 .vercel
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
