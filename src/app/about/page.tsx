@@ -26,7 +26,7 @@ export default function AboutPage() {
             </p>
             <p className="text-lg leading-relaxed">
               WFM Clubs was born from the belief that WFM knowledge should be accessible, practical,
-              and powered by modern AI — not locked behind expensive enterprise tools.
+              and powered by modern AI — not locked behind expensive enterprise tools. Happy Learning!!
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -39,7 +39,8 @@ export default function AboutPage() {
                 💼 Connect on LinkedIn
               </a>
               <a
-                href="https://www.youtube.com/@DataQuest_garry"
+                href="https://www.youtube.com/@wfmclubs"
+                
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 border border-white/30 text-white rounded-lg font-semibold text-sm hover:bg-white/10 transition-colors"

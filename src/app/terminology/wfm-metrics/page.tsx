@@ -215,7 +215,7 @@ const metrics = [
     name: "Forecast Accuracy",
     definition: "Measures how close the forecasted volume is to actual volume.",
     example: "If forecast was 10,000 calls and actual was 9,500, accuracy is 95%.",
-    formula: "1 − (Variance / Forecast Calls)",
+    formula: "1 - (Actual - Forecast) / Actual",
   },
   {
     name: "Training Throughput",
