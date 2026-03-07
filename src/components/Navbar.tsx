@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 type MenuName =
@@ -218,12 +218,27 @@ function NavDropdown({
   onClose: () => void;
   children: React.ReactNode;
 }) {
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(onClose, 150);
+  };
+
+  const handleButtonEnter = () => {
+    cancelClose();
+    if (!isOpen) onToggle();
+  };
+
   return (
-    <div className="relative" onMouseLeave={onClose}>
+    <div className="relative" onMouseLeave={scheduleClose}>
       <button
         className="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-white hover:text-[#00b4ff] hover:bg-white/10 transition-colors"
         onClick={onToggle}
-        onMouseEnter={onToggle}
+        onMouseEnter={handleButtonEnter}
       >
         {label}
         <svg className={`w-3 h-3 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="currentColor" viewBox="0 0 20 20">
@@ -232,7 +247,10 @@ function NavDropdown({
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1 bg-white text-gray-800 rounded-xl shadow-2xl py-1 min-w-[220px] z-50 border border-gray-100">
+        <div
+          className="absolute top-full left-0 mt-1 bg-white text-gray-800 rounded-xl shadow-2xl py-1 min-w-[220px] z-50 border border-gray-100"
+          onMouseEnter={cancelClose}
+        >
           {children}
         </div>
       )}
