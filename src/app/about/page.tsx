@@ -39,7 +39,7 @@ export default function AboutPage() {
                 💼 Connect on LinkedIn
               </a>
               <a
-                href="https://www.youtube.com/@DataQuest_garry"
+                href="https://www.youtube.com/@wfmclubs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 border border-white/30 text-white rounded-lg font-semibold text-sm hover:bg-white/10 transition-colors"
