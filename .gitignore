@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Claude Code worktrees (internal dev tool folders)
+.claude/
+
+# Nested duplicate project folder
+wfm-portal/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
