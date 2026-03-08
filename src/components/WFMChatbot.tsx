@@ -10,15 +10,15 @@ interface Message {
 }
 
 const QUICK_QUESTIONS = [
-  "Calculate staffing: 200 calls, 4 min AHT, 80% SL in 20s",
+  "What is scheduling inflex",
   "What is Erlang C?",
-  "How do I reduce shrinkage?",
+  "How to calcaulate Out of office shrinkage",
   "What is a good occupancy target?",
   "Explain service level vs ASA",
-  "What is the WFM career path?",
+  "How to learn forecasting?",
 ];
 
-const WELCOME = `👋 Hi! I'm your **WFM Clubs Assistant** — powered by DeepSeek AI.
+const WELCOME = `👋 Hi! I'm your **WFM Clubs Assistant** Developed by Gurpreet Singh. Happy Learning 😊
 
 I can help you with **any question** — WFM calculations, forecasting, scheduling, career advice, or anything else you'd like to know.
 
