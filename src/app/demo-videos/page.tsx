@@ -42,7 +42,7 @@ export default function DemoVideosPage() {
 
         <div className="mt-12 text-center">
           <a
-            href="https://www.youtube.com/@DataQuest_garry"
+            href="https://www.youtube.com/@wfmclubs"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-[#0b1c2d] text-white font-semibold rounded-lg hover:bg-[#123b63] transition-colors"
