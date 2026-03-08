@@ -45,20 +45,27 @@ export async function POST(req: NextRequest) {
     }
 
       const raw = await response.text();
-
       let text = raw;
 
       try {
         const parsed = JSON.parse(raw);
 
-        text =
-          parsed?.content ||
-          parsed?.message?.content ||
-          parsed?.choices?.[0]?.message?.content ||
-          parsed?.output?.[0]?.content?.[0]?.text ||
-          parsed?.text ||
-          raw;
-
+        // Handle extended thinking / reasoning model responses
+        const outputContent = parsed?.output?.[0]?.content;
+        if (Array.isArray(outputContent)) {
+          // Find the text block (skip reasoning_content blocks)
+          const textBlock = outputContent.find(
+            (block: { type: string }) => block.type === "text"
+          );
+          text = textBlock?.text ?? raw;
+        } else {
+          text =
+            parsed?.choices?.[0]?.message?.content ||
+            parsed?.content ||
+            parsed?.message?.content ||
+            parsed?.text ||
+            raw;
+        }
       } catch {
         text = raw;
       }
