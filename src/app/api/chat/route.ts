@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const { messages } = await req.json();
 
     // Pollinations AI — completely free, no API key required
-    const response = await fetch("https://text.pollinations.ai/", {
+    const response = await fetch("https://text.pollinations.ai/openai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -44,23 +44,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const raw = await response.text();
+      const raw = await response.text();
 
-    let text = raw;
+      let text = raw;
 
-    try {
-      const parsed = JSON.parse(raw);
+      try {
+        const parsed = JSON.parse(raw);
 
-      text =
-        parsed?.content ||
-        parsed?.message?.content ||
-        parsed?.reasoning ||
-        parsed?.text ||
-        raw;
+        text =
+          parsed?.content ||
+          parsed?.message?.content ||
+          parsed?.choices?.[0]?.message?.content ||
+          parsed?.output?.[0]?.content?.[0]?.text ||
+          parsed?.text ||
+          raw;
 
-    } catch {
-      text = raw;
-    }
+      } catch {
+        text = raw;
+      }
 
     return NextResponse.json({ text: text.trim() });
   } catch (error) {
