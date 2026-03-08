@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+  user-select: none;
+}
+
 /* Video iframe aspect ratio */
 .video-wrapper {
   position: relative;
