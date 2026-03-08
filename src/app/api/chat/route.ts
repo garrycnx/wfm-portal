@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import ReactMarkdown from "react-markdown";
+
+
 
 const SYSTEM_PROMPT = `You are the WFM Clubs Assistant — a friendly, expert AI assistant built into the WFM Clubs platform. You can answer any question on any topic.
 
@@ -41,7 +44,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const text = await response.text();
+    const raw = await response.text();
+
+    let text = raw;
+
+    try {
+      const parsed = JSON.parse(raw);
+
+      text =
+        parsed?.content ||
+        parsed?.message?.content ||
+        parsed?.reasoning ||
+        parsed?.text ||
+        raw;
+
+    } catch {
+      text = raw;
+    }
+
     return NextResponse.json({ text: text.trim() });
   } catch (error) {
     console.error("Chat API error:", error);

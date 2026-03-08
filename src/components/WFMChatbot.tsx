@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 interface Message {
   id: string;
@@ -231,7 +232,11 @@ export default function WFMChatbot() {
                         : "bg-white/8 text-gray-100 rounded-tl-md border border-white/10"
                     }`}
                   >
-                    {msg.role === "assistant" ? parseMarkdown(msg.content) : msg.content}
+                    {msg.role === "assistant" ? (
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    ) : (
+                      msg.content
+                    )}
                   </div>
                 </div>
               ))}
