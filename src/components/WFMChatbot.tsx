@@ -16,7 +16,7 @@ const QUICK_QUESTIONS = [
   "How to calcaulate Out of office shrinkage",
   "What is a good occupancy target?",
   "Explain service level vs ASA",
-  "How to calculate forecast Accuracy?",
+  "How to check forecast Accuracy?",
 ];
 
 const WELCOME = `👋 Hi! I'm your **WFM Clubs Assistant** Developed by Gurpreet Singh. Happy Learning 😊
