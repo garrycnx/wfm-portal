@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
           ...messages,
         ],
         model: "openai",
+        reasoning: false,
         seed: 42,
         private: true,
       }),
@@ -50,22 +51,29 @@ export async function POST(req: NextRequest) {
       try {
         const parsed = JSON.parse(raw);
 
-        // Handle extended thinking / reasoning model responses
-        const outputContent = parsed?.output?.[0]?.content;
-        if (Array.isArray(outputContent)) {
-          // Find the text block (skip reasoning_content blocks)
-          const textBlock = outputContent.find(
-            (block: { type: string }) => block.type === "text"
-          );
-          text = textBlock?.text ?? raw;
-        } else {
-          text =
-            parsed?.choices?.[0]?.message?.content ||
-            parsed?.content ||
-            parsed?.message?.content ||
-            parsed?.text ||
-            raw;
+        // 1️⃣ Standard OpenAI style
+        if (parsed?.choices?.[0]?.message?.content) {
+          text = parsed.choices[0].message.content;
         }
+
+        // 2️⃣ Pollinations reasoning format
+        else if (parsed?.output?.[0]?.content) {
+          const blocks = parsed.output[0].content;
+
+          if (Array.isArray(blocks)) {
+            const textBlocks = blocks
+              .filter((b: any) => b.type === "text")
+              .map((b: any) => b.text);
+
+            text = textBlocks.join("\n");
+          }
+        }
+
+        // 3️⃣ Other fallbacks
+        else if (parsed?.content) {
+          text = parsed.content;
+        }
+
       } catch {
         text = raw;
       }
