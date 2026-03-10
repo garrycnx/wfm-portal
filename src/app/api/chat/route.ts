@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import ReactMarkdown from "react-markdown";
-
-
 
 const SYSTEM_PROMPT = `You are the WFM Clubs Assistant — a friendly, expert AI assistant built into the WFM Clubs platform. You can answer any question on any topic.
 
@@ -18,72 +15,54 @@ For general questions, answer helpfully and concisely.
 Keep responses clear and well-structured. Use **bold** for key terms and numbers.`;
 
 export async function POST(req: NextRequest) {
+  const apiKey = process.env.GROQ_API_KEY;
+
+  if (!apiKey) {
+    return NextResponse.json({
+      text: "⚠️ GROQ_API_KEY is missing from .env.local — please add it and restart the server.",
+    });
+  }
+
   try {
     const { messages } = await req.json();
 
-    // Pollinations AI — completely free, no API key required
-    const response = await fetch("https://text.pollinations.ai/openai", {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,
+      },
       body: JSON.stringify({
+        model: "llama-3.1-8b-instant",  // Current active free model
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...messages,
         ],
-        model: "openai",
-        reasoning: false,
-        seed: 42,
-        private: true,
+        max_tokens: 1000,
+        temperature: 0.7,
       }),
     });
 
-    if (!response.ok) {
-      console.error("Pollinations API error:", response.status);
-      return NextResponse.json(
-        { text: "Sorry, I couldn't get a response right now. Please try again in a moment." },
-        { status: 200 }
-      );
+    const data = await res.json();
+
+    if (!res.ok) {
+      return NextResponse.json({
+        text: `⚠️ Groq error ${res.status}: ${data?.error?.message ?? JSON.stringify(data).slice(0, 200)}`,
+      });
     }
 
-      const raw = await response.text();
-      let text = raw;
+    const text = data?.choices?.[0]?.message?.content?.trim();
 
-      try {
-        const parsed = JSON.parse(raw);
+    if (!text) {
+      return NextResponse.json({
+        text: `⚠️ Empty response. Raw: ${JSON.stringify(data).slice(0, 300)}`,
+      });
+    }
 
-        // 1️⃣ Standard OpenAI style
-        if (parsed?.choices?.[0]?.message?.content) {
-          text = parsed.choices[0].message.content;
-        }
-
-        // 2️⃣ Pollinations reasoning format
-        else if (parsed?.output?.[0]?.content) {
-          const blocks = parsed.output[0].content;
-
-          if (Array.isArray(blocks)) {
-            const textBlocks = blocks
-              .filter((b: any) => b.type === "text")
-              .map((b: any) => b.text);
-
-            text = textBlocks.join("\n");
-          }
-        }
-
-        // 3️⃣ Other fallbacks
-        else if (parsed?.content) {
-          text = parsed.content;
-        }
-
-      } catch {
-        text = raw;
-      }
-
-    return NextResponse.json({ text: text.trim() });
-  } catch (error) {
-    console.error("Chat API error:", error);
-    return NextResponse.json(
-      { text: "An error occurred. Please check your connection and try again." },
-      { status: 200 }
-    );
+    return NextResponse.json({ text });
+  } catch (err: any) {
+    return NextResponse.json({
+      text: `⚠️ Request failed: ${err?.message ?? String(err)}`,
+    });
   }
 }
