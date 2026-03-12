@@ -407,6 +407,11 @@ const qas = [
     q: "What is the impact of attrition on scheduling?",
     a: "Attrition means agents leave the team, reducing the available headcount pool. Schedulers must track actual headcount vs. planned and update schedules accordingly. High attrition creates coverage gaps, forces remaining agents into overtime, increases occupancy, and may cause SL failures. The scheduler works with the capacity planner to flag if attrition will cause the team to fall below required gross headcount, triggering a hiring request.",
   },
+  {
+    q: "What is the impact of attrition on scheduling?",
+    a: "Attrition means agents leave the team, reducing the available headcount pool. Schedulers must track actual headcount vs. planned and update schedules accordingly. High attrition creates coverage gaps, forces remaining agents into overtime, increases occupancy, and may cause SL failures. The scheduler works with the capacity planner to flag if attrition will cause the team to fall below required gross headcount, triggering a hiring request.",
+  },
+  
 ];
 
 export default function SchedulingInterview() {
