@@ -46,6 +46,13 @@ export default function AboutPage() {
               >
                 ▶️ YouTube Channel
               </a>
+              <a
+                href="/Resume_Gurpreet_Singh.pdf"
+                download
+                className="px-5 py-2.5 bg-green-600 text-white rounded-lg font-semibold text-sm hover:bg-green-700 transition-colors"
+              >
+                📄 Download Resume (WFM + AI Experience)
+              </a>
             </div>
           </div>
 
