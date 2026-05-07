@@ -74,7 +74,7 @@ export default function Navbar() {
             <DropdownItem href="/contact" onClick={closeAll}>Contact Us</DropdownItem>
             <ExternalItem href="https://chat.whatsapp.com/Jwc6CHZsRyR2l7uP6x1N6n" onClick={closeAll}>📱 WhatsApp Group</ExternalItem>
             <ExternalItem href="https://www.linkedin.com/in/gurpreetgarry/" onClick={closeAll}>💼 LinkedIn</ExternalItem>
-            <ExternalItem href="https://www.youtube.com/@DataQuest_garry" onClick={closeAll}>▶️ YouTube</ExternalItem>
+            <ExternalItem href="https://www.youtube.com/@wfmclubs" onClick={closeAll}>▶️ YouTube</ExternalItem>
             <ExternalItem href="https://www.instagram.com/wfmclub?igsh=MTE5Z2ZzYXpra3lnag==&utm_source=ig_contact_invite" onClick={closeAll}>📸 Instagram</ExternalItem>
           </NavDropdown>
         </nav>
